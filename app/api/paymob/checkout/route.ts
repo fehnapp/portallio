@@ -1,0 +1,105 @@
+import { NextResponse } from "next/server";
+import { createClient } from "@/lib/supabase/server";
+
+export async function POST() {
+  try {
+    const supabase = createClient();
+    const { data: userData } = await supabase.auth.getUser();
+    const user = userData?.user;
+    if (!user) return NextResponse.json({ error: "Not logged in" }, { status: 401 });
+
+    const apiKey = process.env.PAYMOB_API_KEY;
+    const integrationId = process.env.PAYMOB_INTEGRATION_ID;
+    const iframeId = process.env.PAYMOB_IFRAME_ID;
+
+    if (!apiKey || !integrationId || !iframeId) {
+      return NextResponse.json({ error: "Paymob not configured — missing env vars" }, { status: 500 });
+    }
+
+    // Step 1: Auth token
+    const authRes = await fetch("https://accept.paymob.com/api/auth/tokens", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ api_key: apiKey }),
+    });
+    const authData = await authRes.json();
+    if (!authData.token) {
+      return NextResponse.json({ error: "Paymob auth failed: " + JSON.stringify(authData) }, { status: 500 });
+    }
+
+    const { data: profile } = await supabase.from("users").select("email").eq("id", user.id).single();
+    const email = profile?.email || user.email || "user@example.com";
+
+    // Step 2: Register order
+    // NOTE: currency must match what your integration is configured for in Paymob dashboard.
+    // Your integration #5714624 is set to EGP — change amount_cents accordingly (e.g. 145000 = 1450 EGP).
+    const AMOUNT_CENTS = parseInt(process.env.PAYMOB_AMOUNT_CENTS || "145000"); // default 1450 EGP
+    const CURRENCY = process.env.PAYMOB_CURRENCY || "EGP";
+
+    const orderRes = await fetch("https://accept.paymob.com/api/ecommerce/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        auth_token: authData.token,
+        delivery_needed: false,
+        amount_cents: AMOUNT_CENTS,
+        currency: CURRENCY,
+        merchant_order_id: `${user.id}-${Date.now()}`,
+        items: [
+          {
+            name: "Portalio Pro",
+            amount_cents: AMOUNT_CENTS,
+            description: "Monthly subscription",
+            quantity: 1,
+          },
+        ],
+      }),
+    });
+    const orderData = await orderRes.json();
+    if (!orderData.id) {
+      return NextResponse.json({ error: "Paymob order failed: " + JSON.stringify(orderData) }, { status: 500 });
+    }
+
+    // Step 3: Payment key
+    const payKeyRes = await fetch("https://accept.paymob.com/api/acceptance/payment_keys", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        auth_token: authData.token,
+        amount_cents: AMOUNT_CENTS,
+        expiration: 3600,
+        order_id: orderData.id,
+        billing_data: {
+          email,
+          first_name: "Portalio",
+          last_name: "User",
+          phone_number: "N/A",
+          apartment: "N/A",
+          floor: "N/A",
+          street: "N/A",
+          building: "N/A",
+          shipping_method: "N/A",
+          postal_code: "N/A",
+          city: "N/A",
+          country: "N/A",
+          state: "N/A",
+        },
+        currency: CURRENCY,
+        integration_id: parseInt(integrationId),
+        lock_order_when_paid: true,
+      }),
+    });
+    const payKeyData = await payKeyRes.json();
+    if (!payKeyData.token) {
+      return NextResponse.json(
+        { error: "Paymob payment key failed: " + JSON.stringify(payKeyData) },
+        { status: 500 }
+      );
+    }
+
+    const url = `https://accept.paymob.com/api/acceptance/iframes/${iframeId}?payment_token=${payKeyData.token}`;
+    return NextResponse.json({ url });
+  } catch (e: any) {
+    return NextResponse.json({ error: e.message }, { status: 500 });
+  }
+}
