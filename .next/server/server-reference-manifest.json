@@ -2,117 +2,117 @@
   "node": {
     "3bb2625bc7e68c5343115fb51d6e4c5ed46ee6eb": {
       "workers": {
-        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/dashboard/portals/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
         "app/dashboard/portals/[id]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
+        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/pricing/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/dashboard/page": "rsc",
-        "app/dashboard/portals/new/page": "rsc",
         "app/dashboard/portals/[id]/page": "rsc",
-        "app/p/[slug]/page": "rsc"
+        "app/p/[slug]/page": "rsc",
+        "app/dashboard/page": "rsc",
+        "app/pricing/page": "rsc"
       }
     },
     "8b617f4393f2662fb46bfdcc4d7319cbce3bd851": {
       "workers": {
-        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/dashboard/portals/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
         "app/dashboard/portals/[id]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
+        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/pricing/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/dashboard/page": "rsc",
-        "app/dashboard/portals/new/page": "rsc",
         "app/dashboard/portals/[id]/page": "rsc",
-        "app/p/[slug]/page": "rsc"
+        "app/p/[slug]/page": "rsc",
+        "app/dashboard/page": "rsc",
+        "app/pricing/page": "rsc"
       }
     },
     "97d83bc169e277ca95d97cd1fb9e233fd38b82ba": {
       "workers": {
-        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/dashboard/portals/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
         "app/dashboard/portals/[id]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
+        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/pricing/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/dashboard/page": "rsc",
-        "app/dashboard/portals/new/page": "rsc",
         "app/dashboard/portals/[id]/page": "rsc",
-        "app/p/[slug]/page": "rsc"
+        "app/p/[slug]/page": "rsc",
+        "app/dashboard/page": "rsc",
+        "app/pricing/page": "rsc"
       }
     },
     "b3bafa984c0f6f1ff451c90344abbacefe2e9169": {
       "workers": {
-        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/dashboard/portals/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
         "app/dashboard/portals/[id]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
+        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/pricing/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/dashboard/page": "rsc",
-        "app/dashboard/portals/new/page": "rsc",
         "app/dashboard/portals/[id]/page": "rsc",
-        "app/p/[slug]/page": "rsc"
+        "app/p/[slug]/page": "rsc",
+        "app/dashboard/page": "rsc",
+        "app/pricing/page": "rsc"
       }
     },
     "b5dbacb5c6b418ba49094eab3be9c2de85c9c0c2": {
       "workers": {
-        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/dashboard/portals/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
         "app/dashboard/portals/[id]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
+        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/pricing/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/dashboard/page": "rsc",
-        "app/dashboard/portals/new/page": "rsc",
         "app/dashboard/portals/[id]/page": "rsc",
-        "app/p/[slug]/page": "rsc"
+        "app/p/[slug]/page": "rsc",
+        "app/dashboard/page": "rsc",
+        "app/pricing/page": "rsc"
       }
     },
     "e6439cf3c2afd320f6ec77e0bca13cbec340ffed": {
       "workers": {
-        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/dashboard/portals/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
         "app/dashboard/portals/[id]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
+        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/pricing/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/dashboard/page": "rsc",
-        "app/dashboard/portals/new/page": "rsc",
         "app/dashboard/portals/[id]/page": "rsc",
-        "app/p/[slug]/page": "rsc"
+        "app/p/[slug]/page": "rsc",
+        "app/dashboard/page": "rsc",
+        "app/pricing/page": "rsc"
       }
     },
     "f01016ad092f772a80ccb2dd0c7d409f9346b6aa": {
       "workers": {
-        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/dashboard/portals/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
         "app/dashboard/portals/[id]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
+        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/pricing/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/dashboard/page": "rsc",
-        "app/dashboard/portals/new/page": "rsc",
         "app/dashboard/portals/[id]/page": "rsc",
-        "app/p/[slug]/page": "rsc"
+        "app/p/[slug]/page": "rsc",
+        "app/dashboard/page": "rsc",
+        "app/pricing/page": "rsc"
       }
     },
     "f4c6233dc56e7e023ec1d38a36666be60353c092": {
       "workers": {
-        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/dashboard/portals/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
         "app/dashboard/portals/[id]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
-        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
+        "app/p/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/dashboard/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!",
+        "app/pricing/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fselimfahmy%2FDesktop%2Fportalio%2Fapp%2Factions.ts%22%2C%5B%22sendFreelancerMessage%22%2C%22sendClientMessage%22%2C%22recordPortalView%22%2C%22createPaymobCheckout%22%2C%22updatePortal%22%2C%22signOut%22%2C%22uploadPortalFiles%22%2C%22createPortal%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/dashboard/page": "rsc",
-        "app/dashboard/portals/new/page": "rsc",
         "app/dashboard/portals/[id]/page": "rsc",
-        "app/p/[slug]/page": "rsc"
+        "app/p/[slug]/page": "rsc",
+        "app/dashboard/page": "rsc",
+        "app/pricing/page": "rsc"
       }
     }
   },
   "edge": {},
-  "encryptionKey": "pzmzVa0QSLfsAZZ7ZqGBzIWrxfLSz1toUaS23RAJazA="
+  "encryptionKey": "UvWnPfNlEl510ID06NjMy5ltyiPF3wsjJqKM1Ee/0Tw="
 }
