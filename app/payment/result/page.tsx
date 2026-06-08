@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { XCircle } from "lucide-react";
-import { createClient, createServiceClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
+import { activatePaidAccess } from "@/lib/subscription";
 
 export default async function PaymentResultPage({
   searchParams,
@@ -11,34 +12,38 @@ export default async function PaymentResultPage({
   const success = searchParams.success === "true" && searchParams.error_occured !== "true";
 
   if (success) {
-    let activated = false;
-
     // Try session first
     const supabase = createClient();
     const { data: userData } = await supabase.auth.getUser();
 
     if (userData?.user) {
-      const { error } = await supabase
-        .from("users")
-        .update({ subscription_status: "active", subscription_updated_at: new Date().toISOString() })
-        .eq("id", userData.user.id);
-      if (!error) activated = true;
+      const { error } = await activatePaidAccess(userData.user.id, userData.user.email ?? undefined);
+      if (!error) redirect("/dashboard?payment=success");
     }
 
     // Fallback: use merchant_order_id from URL (format: userId|timestamp)
-    if (!activated) {
-      const merchantOrderId = searchParams.merchant_order_id || "";
-      const userId = merchantOrderId.split("|")[0];
-      if (userId && userId.length > 10) {
-        const serviceSupabase = createServiceClient();
-        await serviceSupabase
-          .from("users")
-          .update({ subscription_status: "active", subscription_updated_at: new Date().toISOString() })
-          .eq("id", userId);
-      }
+    const merchantOrderId = searchParams.merchant_order_id || "";
+    const userId = merchantOrderId.split("|")[0];
+    if (userId && userId.length > 10) {
+      const { error } = await activatePaidAccess(userId);
+      if (!error) redirect("/dashboard?payment=success");
     }
 
-    redirect("/dashboard");
+    return (
+      <main className="min-h-screen bg-zinc-50 flex items-center justify-center px-4">
+        <div className="mx-auto max-w-md w-full">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-8 text-center" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
+            <h1 className="text-2xl font-bold tracking-tight">Payment received</h1>
+            <p className="mt-2 text-sm text-zinc-500">
+              Your payment went through. We are still turning on your paid access. Wait a minute, then refresh dashboard.
+            </p>
+            <Link href="/dashboard" className="mt-6 inline-flex items-center justify-center rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors">
+              Go to dashboard
+            </Link>
+          </div>
+        </div>
+      </main>
+    );
   }
 
   const errorMessage = searchParams["data.message"] || "Your payment was not completed.";
