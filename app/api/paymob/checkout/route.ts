@@ -88,7 +88,15 @@ export async function POST() {
     }
 
     const url = `https://accept.paymob.com/api/acceptance/iframes/${iframeId}?payment_token=${payKeyData.token}`;
-    return NextResponse.json({ url });
+    const response = NextResponse.json({ url });
+    response.cookies.set("portalio_pending_payment_user", user.id, {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+      maxAge: 60 * 60,
+    });
+    return response;
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 });
   }

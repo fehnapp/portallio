@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { XCircle } from "lucide-react";
+import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { activatePaidAccess } from "@/lib/subscription";
@@ -18,6 +19,12 @@ export default async function PaymentResultPage({
 
     if (userData?.user) {
       const { error } = await activatePaidAccess(userData.user.id, userData.user.email ?? undefined);
+      if (!error) redirect("/dashboard?payment=success");
+    }
+
+    const pendingUserId = cookies().get("portalio_pending_payment_user")?.value;
+    if (pendingUserId && pendingUserId.length > 10) {
+      const { error } = await activatePaidAccess(pendingUserId);
       if (!error) redirect("/dashboard?payment=success");
     }
 
