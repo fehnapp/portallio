@@ -1,30 +1,22 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
-import { Check, ArrowLeft, CreditCard, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
+import { Check, ArrowLeft, CreditCard } from "lucide-react";
+import { createClient } from "@/lib/supabase/server";
+import { PricingPayButton } from "@/components/pricing-pay-button";
 
-export default function PricingPage({ searchParams }: { searchParams: { limit?: string } }) {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+export default async function PricingPage({ searchParams }: { searchParams: { limit?: string } }) {
+  const supabase = createClient();
+  const { data: userData } = await supabase.auth.getUser();
 
-  async function handlePay() {
-    setLoading(true);
-    setError("");
-    try {
-      // Fixed: was "/api/paymob/checkout" which didn't exist — now points to the correct route
-      const res = await fetch("/api/paymob/checkout", { method: "POST" });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || "Payment failed. Please try again.");
-        setLoading(false);
-        return;
-      }
-      window.location.href = data.url;
-    } catch (e: any) {
-      setError("Something went wrong: " + e.message);
-      setLoading(false);
+  if (userData?.user) {
+    const { data: profile } = await supabase
+      .from("users")
+      .select("subscription_status")
+      .eq("id", userData.user.id)
+      .single();
+
+    if (profile?.subscription_status === "active") {
+      redirect("/dashboard");
     }
   }
 
@@ -87,23 +79,7 @@ export default function PricingPage({ searchParams }: { searchParams: { limit?: 
             <p className="mt-2 text-xs text-zinc-400">Secure payment powered by Paymob · EGP</p>
           </div>
 
-          {error && (
-            <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-              {error}
-            </div>
-          )}
-
-          <Button className="mt-6 w-full" size="lg" onClick={handlePay} disabled={loading}>
-            {loading ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" /> Processing…
-              </>
-            ) : (
-              <>
-                <CreditCard className="h-4 w-4" /> Pay with card
-              </>
-            )}
-          </Button>
+          <PricingPayButton />
 
           <p className="mt-4 text-center text-xs text-zinc-400">Cancel any time. No long-term commitment.</p>
         </div>

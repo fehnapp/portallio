@@ -620,6 +620,9 @@ body{
 .mt-8{
   margin-top: 2rem;
 }
+.inline-block{
+  display: inline-block;
+}
 .flex{
   display: flex;
 }
@@ -1281,6 +1284,10 @@ body{
   --tw-text-opacity: 1;
   color: rgb(24 24 27 / var(--tw-text-opacity, 1));
 }
+.text-red-500{
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
+}
 .underline-offset-2{
   text-underline-offset: 2px;
 }
@@ -1464,6 +1471,11 @@ body{
 .hover\:bg-zinc-50:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(250 250 250 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-emerald-700:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 120 87 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-zinc-600:hover{
