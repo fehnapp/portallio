@@ -3,8 +3,6 @@ create table if not exists public.users (
   email text,
   subscription_status text not null default 'free' check (subscription_status in ('free', 'active', 'canceled')),
   subscription_updated_at timestamptz,
-  stripe_customer_id text,
-  stripe_subscription_status text not null default 'free' check (stripe_subscription_status in ('free', 'active', 'canceled')),
   created_at timestamptz not null default now()
 );
 

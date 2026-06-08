@@ -132,7 +132,7 @@ export function PortalForm({
               defaultValue={portal?.invoice_payment_url ?? ""}
               className={inputClass}
             />
-            <p className="text-xs text-zinc-400">PayPal, Stripe, Wise, any payment link</p>
+            <p className="text-xs text-zinc-400">PayPal, Wise, any payment link</p>
           </div>
         )}
 
