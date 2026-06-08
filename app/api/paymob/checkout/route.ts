@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 
 export async function POST() {
   try {
@@ -61,7 +61,7 @@ export async function POST() {
       return NextResponse.json({ error: "Paymob order failed: " + JSON.stringify(orderData) }, { status: 500 });
     }
 
-    await supabase
+    await createServiceClient()
       .from("users")
       .update({ paymob_order_id: String(orderData.id) })
       .eq("id", user.id);

@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { activatePaidAccess } from "@/lib/subscription";
 
 export async function POST(req: Request) {
@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
   const paymobOrderId = String(body.paymob_order_id || "").trim();
   if (paymobOrderId) {
-    const { data: orderUser } = await supabase
+    const { data: orderUser } = await createServiceClient()
       .from("users")
       .select("id")
       .eq("paymob_order_id", paymobOrderId)
