@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { ExternalLink, Eye, EyeOff, Plus } from "lucide-react";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 
 export default async function DashboardPage() {
   const supabase = createClient();
   const { data: userData } = await supabase.auth.getUser();
-  const user = userData.user!;
+  if (!userData.user) redirect("/login");
+  const user = userData.user;
 
   const [{ data: portals }, { data: profile }] = await Promise.all([
     supabase.from("portals").select("*, portal_views(id)").eq("user_id", user.id).order("created_at", { ascending: false }),

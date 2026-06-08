@@ -139,8 +139,11 @@ export async function recordPortalView(portal: Portal) {
     .from("portal_views")
     .select("id", { count: "exact", head: true })
     .eq("portal_id", portal.id);
+
+  if ((count || 0) > 0) return;
+
   await supabase.from("portal_views").insert({ portal_id: portal.id });
-  if ((count || 0) === 0) await notifyFirstPortalView(portal);
+  await notifyFirstPortalView(portal);
 }
 
 export async function sendClientMessage(portalId: string, formData: FormData) {
