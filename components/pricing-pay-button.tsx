@@ -37,7 +37,7 @@ export function PricingPayButton() {
         {loading ? (
           <><Loader2 className="h-4 w-4 animate-spin" /> Processing…</>
         ) : (
-          <><CreditCard className="h-4 w-4" /> Pay with card</>
+          <><CreditCard className="h-4 w-4" /> Pay $29 — Lifetime Access</>
         )}
       </Button>
     </>

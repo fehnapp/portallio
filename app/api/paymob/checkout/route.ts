@@ -8,6 +8,17 @@ export async function POST() {
     const user = userData?.user;
     if (!user) return NextResponse.json({ error: "Not logged in" }, { status: 401 });
 
+    // Check if already subscribed
+    const { data: profile } = await supabase
+      .from("users")
+      .select("subscription_status, email")
+      .eq("id", user.id)
+      .single();
+
+    if (profile?.subscription_status === "active") {
+      return NextResponse.json({ error: "You already have an active subscription." }, { status: 400 });
+    }
+
     const apiKey = process.env.PAYMOB_API_KEY;
     const integrationId = process.env.PAYMOB_INTEGRATION_ID;
     const iframeId = process.env.PAYMOB_IFRAME_ID;
@@ -15,6 +26,12 @@ export async function POST() {
     if (!apiKey || !integrationId || !iframeId) {
       return NextResponse.json({ error: "Paymob not configured — missing env vars" }, { status: 500 });
     }
+
+    // $29 one-time purchase — stored as EGP equivalent in piastres
+    // Read from env so you can change price without redeploying
+    const AMOUNT_CENTS = parseInt(process.env.PAYMOB_AMOUNT_CENTS || "90000"); // 900 EGP default (~$29)
+    const CURRENCY = process.env.PAYMOB_CURRENCY || "EGP";
+    const email = profile?.email || user.email || "user@example.com";
 
     // Step 1: Auth token
     const authRes = await fetch("https://accept.paymob.com/api/auth/tokens", {
@@ -27,15 +44,7 @@ export async function POST() {
       return NextResponse.json({ error: "Paymob auth failed: " + JSON.stringify(authData) }, { status: 500 });
     }
 
-    const { data: profile } = await supabase.from("users").select("email").eq("id", user.id).single();
-    const email = profile?.email || user.email || "user@example.com";
-
     // Step 2: Register order
-    // NOTE: currency must match what your integration is configured for in Paymob dashboard.
-    // Your integration #5714624 is set to EGP — change amount_cents accordingly (e.g. 145000 = 1450 EGP).
-    const AMOUNT_CENTS = parseInt(process.env.PAYMOB_AMOUNT_CENTS || "145000"); // default 1450 EGP
-    const CURRENCY = process.env.PAYMOB_CURRENCY || "EGP";
-
     const orderRes = await fetch("https://accept.paymob.com/api/ecommerce/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -49,7 +58,7 @@ export async function POST() {
           {
             name: "Portalio Pro",
             amount_cents: AMOUNT_CENTS,
-            description: "Monthly subscription",
+            description: "One-time purchase — lifetime access",
             quantity: 1,
           },
         ],

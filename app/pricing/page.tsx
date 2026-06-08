@@ -37,15 +37,15 @@ export default async function PricingPage({ searchParams }: { searchParams: { li
             </div>
           )}
 
-          <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">One plan</span>
+          <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">Lifetime access</span>
           <h1 className="mt-3 text-3xl font-bold tracking-tight">Portalio Pro</h1>
           <p className="mt-2 text-sm text-zinc-500 leading-relaxed">
-            Unlimited client portals with files, invoices, project status, and chat.
+            Unlimited client portals with files, invoices, project status, and chat. Pay once, use forever.
           </p>
 
           <div className="mt-6 flex items-end gap-2">
             <span className="text-5xl font-bold tracking-tight">$29</span>
-            <span className="pb-2 text-sm text-zinc-400">/month</span>
+            <span className="pb-2 text-sm text-zinc-400">one-time</span>
           </div>
 
           <ul className="mt-6 space-y-2.5">
@@ -56,6 +56,7 @@ export default async function PricingPage({ searchParams }: { searchParams: { li
               "Client chat with email alerts",
               "Project status updates",
               "No client account required",
+              "Lifetime access — pay once",
             ].map((item) => (
               <li key={item} className="flex items-center gap-2.5 text-sm text-zinc-700">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-50 shrink-0">
@@ -76,12 +77,12 @@ export default async function PricingPage({ searchParams }: { searchParams: { li
                 </span>
               ))}
             </div>
-            <p className="mt-2 text-xs text-zinc-400">Secure payment powered by Paymob · EGP</p>
+            <p className="mt-2 text-xs text-zinc-400">Secure payment powered by Paymob · Works worldwide</p>
           </div>
 
           <PricingPayButton />
 
-          <p className="mt-4 text-center text-xs text-zinc-400">Cancel any time. No long-term commitment.</p>
+          <p className="mt-4 text-center text-xs text-zinc-400">One-time payment. No subscriptions. No hidden fees.</p>
         </div>
       </div>
     </main>
