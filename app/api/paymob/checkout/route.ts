@@ -1,6 +1,20 @@
 import { NextResponse } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 
+function paymentCookieOptions() {
+  const host = process.env.NEXT_PUBLIC_APP_URL || "";
+  const domain = host.includes("portallio.com") ? ".portallio.com" : undefined;
+
+  return {
+    httpOnly: true,
+    sameSite: "lax" as const,
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    maxAge: 60 * 60,
+    ...(domain ? { domain } : {})
+  };
+}
+
 export async function POST() {
   try {
     const supabase = createClient();
@@ -94,13 +108,7 @@ export async function POST() {
 
     const url = `https://accept.paymob.com/api/acceptance/iframes/${iframeId}?payment_token=${payKeyData.token}`;
     const response = NextResponse.json({ url });
-    response.cookies.set("portalio_pending_payment_user", user.id, {
-      httpOnly: true,
-      sameSite: "lax",
-      secure: process.env.NODE_ENV === "production",
-      path: "/",
-      maxAge: 60 * 60,
-    });
+    response.cookies.set("portalio_pending_payment_user", user.id, paymentCookieOptions());
     return response;
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 });

@@ -20,10 +20,19 @@ export function PaymentConfirmation({ paymobOrderId, merchantOrderId, success, e
 
     async function confirm() {
       try {
+        const currentUrl = typeof window !== "undefined" ? new URL(window.location.href) : null;
+        const urlPaymobOrderId = currentUrl?.searchParams.get("id") || "";
+        const urlMerchantOrderId = currentUrl?.searchParams.get("merchant_order_id") || "";
+
         const res = await fetch("/api/paymob/confirm", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ paymob_order_id: paymobOrderId, merchant_order_id: merchantOrderId, success, error_occured: errorOccured }),
+          body: JSON.stringify({
+            paymob_order_id: paymobOrderId || urlPaymobOrderId,
+            merchant_order_id: merchantOrderId || urlMerchantOrderId,
+            success,
+            error_occured: errorOccured,
+          }),
         });
         if (!alive) return;
 

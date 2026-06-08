@@ -3,6 +3,16 @@ import { NextResponse } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { activatePaidAccess } from "@/lib/subscription";
 
+function clearPaymentCookie(response: NextResponse) {
+  const host = process.env.NEXT_PUBLIC_APP_URL || "";
+  const domain = host.includes("portallio.com") ? ".portallio.com" : undefined;
+  response.cookies.set("portalio_pending_payment_user", "", {
+    path: "/",
+    maxAge: 0,
+    ...(domain ? { domain } : {})
+  });
+}
+
 export async function POST(req: Request) {
   let body: any = {};
   try {
@@ -26,7 +36,7 @@ export async function POST(req: Request) {
       const { error } = await activatePaidAccess(orderUser.id);
       if (!error) {
         const response = NextResponse.json({ ok: true, source: "paymob_order_id" });
-        response.cookies.set("portalio_pending_payment_user", "", { path: "/", maxAge: 0 });
+        clearPaymentCookie(response);
         return response;
       }
     }
@@ -38,7 +48,7 @@ export async function POST(req: Request) {
     const { error } = await activatePaidAccess(userIdFromOrder);
     if (!error) {
       const response = NextResponse.json({ ok: true, source: "merchant_order_id" });
-      response.cookies.set("portalio_pending_payment_user", "", { path: "/", maxAge: 0 });
+      clearPaymentCookie(response);
       return response;
     }
   }
@@ -47,7 +57,7 @@ export async function POST(req: Request) {
     const { error } = await activatePaidAccess(userData.user.id, userData.user.email ?? undefined);
     if (!error) {
       const response = NextResponse.json({ ok: true, source: "session" });
-      response.cookies.set("portalio_pending_payment_user", "", { path: "/", maxAge: 0 });
+      clearPaymentCookie(response);
       return response;
     }
   }
@@ -57,7 +67,7 @@ export async function POST(req: Request) {
     const { error } = await activatePaidAccess(pendingUserId);
     if (!error) {
       const response = NextResponse.json({ ok: true, source: "cookie" });
-      response.cookies.set("portalio_pending_payment_user", "", { path: "/", maxAge: 0 });
+      clearPaymentCookie(response);
       return response;
     }
   }
