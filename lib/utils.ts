@@ -22,7 +22,16 @@ export function formatDate(date: string | null | undefined) {
   }).format(new Date(date));
 }
 
-export function publicPortalUrl(slug: string) {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  return `${appUrl.replace(/\/$/, "")}/p/${slug}`;
+export function resolveAppUrl(fallback?: string) {
+  const envUrl = process.env.NEXT_PUBLIC_APP_URL?.trim();
+  const vercelUrl = process.env.VERCEL_URL?.trim();
+  const baseUrl = envUrl || (vercelUrl ? `https://${vercelUrl}` : fallback || "");
+
+  return baseUrl.replace(/\/$/, "");
+}
+
+export function publicPortalUrl(slug: string, baseUrl?: string) {
+  const appUrl = resolveAppUrl(baseUrl);
+  if (!appUrl) return `/p/${slug}`;
+  return `${appUrl}/p/${slug}`;
 }

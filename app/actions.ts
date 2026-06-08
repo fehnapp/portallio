@@ -169,7 +169,6 @@ export async function createPaymobCheckout() {
 
   const apiKey = process.env.PAYMOB_API_KEY;
   const integrationId = process.env.PAYMOB_INTEGRATION_ID;
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
   if (!apiKey || !integrationId) {
     throw new Error("Paymob credentials not configured. Add PAYMOB_API_KEY and PAYMOB_INTEGRATION_ID to .env.local");

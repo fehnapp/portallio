@@ -1,4 +1,5 @@
 import { notFound, redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import type { Message, Portal, PortalFile } from "@/lib/types";
 import { publicPortalUrl } from "@/lib/utils";
@@ -6,6 +7,11 @@ import { sendFreelancerMessage, updatePortal, uploadPortalFiles } from "@/app/ac
 import { PortalDetailClient } from "@/components/portal-detail-client";
 
 export default async function PortalDetailPage({ params }: { params: { id: string } }) {
+  const requestHeaders = headers();
+  const protocol = requestHeaders.get("x-forwarded-proto") || "https";
+  const host = requestHeaders.get("x-forwarded-host") || requestHeaders.get("host") || "";
+  const baseUrl = host ? `${protocol}://${host}` : undefined;
+
   const supabase = createClient();
   const { data: userData } = await supabase.auth.getUser();
   if (!userData.user) redirect("/login");
@@ -33,7 +39,7 @@ export default async function PortalDetailPage({ params }: { params: { id: strin
       portal={portal}
       files={(files as PortalFile[]) || []}
       messages={(messages as Message[]) || []}
-      link={publicPortalUrl(portal.slug)}
+      link={publicPortalUrl(portal.slug, baseUrl)}
       updateAction={updateAction}
       uploadAction={uploadAction}
       replyAction={replyAction}
