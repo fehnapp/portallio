@@ -49,7 +49,7 @@ export default function HomePage() {
           <Button asChild size="lg" className="w-full sm:w-auto">
             <Link href="/signup">Create your first portal free <ArrowRight className="h-4 w-4" /></Link>
           </Button>
-          <p className="text-sm text-zinc-400">First portal free · Then $29/month</p>
+          <p className="text-sm text-zinc-400">First portal free · Then $29 one-time</p>
         </div>
       </section>
 
@@ -164,7 +164,7 @@ export default function HomePage() {
             <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">One plan</span>
             <div className="mt-4 flex items-end gap-2">
               <span className="text-5xl font-bold tracking-tight">$29</span>
-              <span className="pb-2 text-sm text-zinc-400">/month</span>
+              <span className="pb-2 text-sm text-zinc-400">one-time</span>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-zinc-500">First portal free, no card needed. Upgrade when you land your second client.</p>
             <ul className="mt-6 space-y-2.5">

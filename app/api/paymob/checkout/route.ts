@@ -8,7 +8,6 @@ export async function POST() {
     const user = userData?.user;
     if (!user) return NextResponse.json({ error: "Not logged in" }, { status: 401 });
 
-    // Check if already subscribed
     const { data: profile } = await supabase
       .from("users")
       .select("subscription_status, email")
@@ -27,9 +26,7 @@ export async function POST() {
       return NextResponse.json({ error: "Paymob not configured — missing env vars" }, { status: 500 });
     }
 
-    // $29 one-time purchase — stored as EGP equivalent in piastres
-    // Read from env so you can change price without redeploying
-    const AMOUNT_CENTS = parseInt(process.env.PAYMOB_AMOUNT_CENTS || "90000"); // 900 EGP default (~$29)
+    const AMOUNT_CENTS = parseInt(process.env.PAYMOB_AMOUNT_CENTS || "90000");
     const CURRENCY = process.env.PAYMOB_CURRENCY || "EGP";
     const email = profile?.email || user.email || "user@example.com";
 
@@ -45,6 +42,8 @@ export async function POST() {
     }
 
     // Step 2: Register order
+    // IMPORTANT: use "|" as separator so we can extract the full UUID later in the webhook
+    const merchantOrderId = `${user.id}|${Date.now()}`;
     const orderRes = await fetch("https://accept.paymob.com/api/ecommerce/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -53,15 +52,8 @@ export async function POST() {
         delivery_needed: false,
         amount_cents: AMOUNT_CENTS,
         currency: CURRENCY,
-        merchant_order_id: `${user.id}-${Date.now()}`,
-        items: [
-          {
-            name: "Portalio Pro",
-            amount_cents: AMOUNT_CENTS,
-            description: "One-time purchase — lifetime access",
-            quantity: 1,
-          },
-        ],
+        merchant_order_id: merchantOrderId,
+        items: [{ name: "Portalio Pro", amount_cents: AMOUNT_CENTS, description: "One-time purchase — lifetime access", quantity: 1 }],
       }),
     });
     const orderData = await orderRes.json();
@@ -80,18 +72,10 @@ export async function POST() {
         order_id: orderData.id,
         billing_data: {
           email,
-          first_name: "Portalio",
-          last_name: "User",
-          phone_number: "N/A",
-          apartment: "N/A",
-          floor: "N/A",
-          street: "N/A",
-          building: "N/A",
-          shipping_method: "N/A",
-          postal_code: "N/A",
-          city: "N/A",
-          country: "N/A",
-          state: "N/A",
+          first_name: "Portalio", last_name: "User",
+          phone_number: "N/A", apartment: "N/A", floor: "N/A",
+          street: "N/A", building: "N/A", shipping_method: "N/A",
+          postal_code: "N/A", city: "N/A", country: "N/A", state: "N/A",
         },
         currency: CURRENCY,
         integration_id: parseInt(integrationId),
@@ -100,10 +84,7 @@ export async function POST() {
     });
     const payKeyData = await payKeyRes.json();
     if (!payKeyData.token) {
-      return NextResponse.json(
-        { error: "Paymob payment key failed: " + JSON.stringify(payKeyData) },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "Paymob payment key failed: " + JSON.stringify(payKeyData) }, { status: 500 });
     }
 
     const url = `https://accept.paymob.com/api/acceptance/iframes/${iframeId}?payment_token=${payKeyData.token}`;

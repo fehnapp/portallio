@@ -28,8 +28,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ received: true, action: "ignored" });
     }
 
+    // Extract userId — format is "{userId}|{timestamp}"
     const merchantOrderId: string = obj.order?.merchant_order_id || "";
-    const userId = merchantOrderId.split("-")[0];
+    const userId = merchantOrderId.split("|")[0];
+
     if (!userId) {
       return NextResponse.json({ error: "Unknown user" }, { status: 400 });
     }

@@ -32,7 +32,7 @@ export default async function DashboardPage() {
       {isFreeLimit && (
         <div className="flex flex-col gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3.5 text-sm text-emerald-800 sm:flex-row sm:items-center sm:justify-between">
           <p>You've used your free portal. Upgrade to create unlimited client portals.</p>
-          <Button asChild size="sm" className="shrink-0"><Link href="/pricing">Upgrade — $29/mo</Link></Button>
+          <Button asChild size="sm" className="shrink-0"><Link href="/pricing">Upgrade — $29 one-time</Link></Button>
         </div>
       )}
 
