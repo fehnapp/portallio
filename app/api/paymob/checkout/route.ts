@@ -61,6 +61,11 @@ export async function POST() {
       return NextResponse.json({ error: "Paymob order failed: " + JSON.stringify(orderData) }, { status: 500 });
     }
 
+    await supabase
+      .from("users")
+      .update({ paymob_order_id: String(orderData.id) })
+      .eq("id", user.id);
+
     // Step 3: Payment key
     const payKeyRes = await fetch("https://accept.paymob.com/api/acceptance/payment_keys", {
       method: "POST",

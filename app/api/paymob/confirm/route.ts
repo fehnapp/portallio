@@ -14,6 +14,24 @@ export async function POST(req: Request) {
   const supabase = createClient();
   const { data: userData } = await supabase.auth.getUser();
 
+  const paymobOrderId = String(body.paymob_order_id || "").trim();
+  if (paymobOrderId) {
+    const { data: orderUser } = await supabase
+      .from("users")
+      .select("id")
+      .eq("paymob_order_id", paymobOrderId)
+      .maybeSingle();
+
+    if (orderUser?.id) {
+      const { error } = await activatePaidAccess(orderUser.id);
+      if (!error) {
+        const response = NextResponse.json({ ok: true, source: "paymob_order_id" });
+        response.cookies.set("portalio_pending_payment_user", "", { path: "/", maxAge: 0 });
+        return response;
+      }
+    }
+  }
+
   const merchantOrderId = String(body.merchant_order_id || "").trim();
   const userIdFromOrder = merchantOrderId.split("|")[0];
   if (userIdFromOrder && userIdFromOrder.length > 10) {

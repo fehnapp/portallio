@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import { Loader2, CheckCircle2, XCircle } from "lucide-react";
 
 type Props = {
+  paymobOrderId?: string;
   merchantOrderId?: string;
   success?: string;
   errorOccured?: string;
 };
 
-export function PaymentConfirmation({ merchantOrderId, success, errorOccured }: Props) {
+export function PaymentConfirmation({ paymobOrderId, merchantOrderId, success, errorOccured }: Props) {
   const router = useRouter();
   const [status, setStatus] = useState<"checking" | "done" | "error">("checking");
 
@@ -22,7 +23,7 @@ export function PaymentConfirmation({ merchantOrderId, success, errorOccured }: 
         const res = await fetch("/api/paymob/confirm", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ merchant_order_id: merchantOrderId, success, error_occured: errorOccured }),
+          body: JSON.stringify({ paymob_order_id: paymobOrderId, merchant_order_id: merchantOrderId, success, error_occured: errorOccured }),
         });
         if (!alive) return;
 
@@ -44,7 +45,7 @@ export function PaymentConfirmation({ merchantOrderId, success, errorOccured }: 
     return () => {
       alive = false;
     };
-  }, [router, merchantOrderId, success, errorOccured]);
+  }, [router, paymobOrderId, merchantOrderId, success, errorOccured]);
 
   return (
     <main className="min-h-screen bg-zinc-50 flex items-center justify-center px-4">
