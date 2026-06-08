@@ -1,25 +1,43 @@
 import Link from "next/link";
 import { XCircle } from "lucide-react";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
 export default async function PaymentResultPage({
   searchParams,
 }: {
-  searchParams: { success?: string; error_occured?: string; "data.message"?: string };
+  searchParams: { success?: string; error_occured?: string; "data.message"?: string; merchant_order_id?: string };
 }) {
   const success = searchParams.success === "true" && searchParams.error_occured !== "true";
 
   if (success) {
-    // Mark subscription active immediately on redirect
+    let activated = false;
+
+    // Try session first
     const supabase = createClient();
     const { data: userData } = await supabase.auth.getUser();
+
     if (userData?.user) {
-      await supabase
+      const { error } = await supabase
         .from("users")
         .update({ subscription_status: "active", subscription_updated_at: new Date().toISOString() })
         .eq("id", userData.user.id);
+      if (!error) activated = true;
     }
+
+    // Fallback: use merchant_order_id from URL (format: userId|timestamp)
+    if (!activated) {
+      const merchantOrderId = searchParams.merchant_order_id || "";
+      const userId = merchantOrderId.split("|")[0];
+      if (userId && userId.length > 10) {
+        const serviceSupabase = createServiceClient();
+        await serviceSupabase
+          .from("users")
+          .update({ subscription_status: "active", subscription_updated_at: new Date().toISOString() })
+          .eq("id", userId);
+      }
+    }
+
     redirect("/dashboard");
   }
 
@@ -35,10 +53,7 @@ export default async function PaymentResultPage({
           <p className="mt-4 text-sm text-zinc-400">
             Please try again with a different card, or contact your bank if the issue persists.
           </p>
-          <Link
-            href="/pricing"
-            className="mt-6 flex items-center justify-center w-full rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors"
-          >
+          <Link href="/pricing" className="mt-6 flex items-center justify-center w-full rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors">
             Try Again
           </Link>
           <Link href="/dashboard" className="mt-3 inline-block text-sm text-zinc-400 hover:text-zinc-600">
