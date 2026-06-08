@@ -3,9 +3,27 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { activatePaidAccess } from "@/lib/subscription";
 
-export async function POST() {
+export async function POST(req: Request) {
+  let body: any = {};
+  try {
+    body = await req.json();
+  } catch {
+    body = {};
+  }
+
   const supabase = createClient();
   const { data: userData } = await supabase.auth.getUser();
+
+  const merchantOrderId = String(body.merchant_order_id || "").trim();
+  const userIdFromOrder = merchantOrderId.split("|")[0];
+  if (userIdFromOrder && userIdFromOrder.length > 10) {
+    const { error } = await activatePaidAccess(userIdFromOrder);
+    if (!error) {
+      const response = NextResponse.json({ ok: true, source: "merchant_order_id" });
+      response.cookies.set("portalio_pending_payment_user", "", { path: "/", maxAge: 0 });
+      return response;
+    }
+  }
 
   if (userData?.user) {
     const { error } = await activatePaidAccess(userData.user.id, userData.user.email ?? undefined);
