@@ -107,7 +107,7 @@ export async function POST() {
     }
 
     const url = `https://accept.paymob.com/api/acceptance/iframes/${iframeId}?payment_token=${payKeyData.token}`;
-    const response = NextResponse.json({ url });
+    const response = NextResponse.json({ url, pending_user_id: user.id });
     response.cookies.set("portalio_pending_payment_user", user.id, paymentCookieOptions());
     return response;
   } catch (e: any) {

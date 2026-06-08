@@ -7,6 +7,7 @@ export default function PaymentResultPage({
 }) {
   return (
     <PaymentConfirmation
+      pendingUserId={undefined}
       paymobOrderId={searchParams.id}
       merchantOrderId={searchParams.merchant_order_id}
       success={searchParams.success}

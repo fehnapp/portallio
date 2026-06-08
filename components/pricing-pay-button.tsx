@@ -19,6 +19,9 @@ export function PricingPayButton() {
         setLoading(false);
         return;
       }
+      if (data.pending_user_id) {
+        window.localStorage.setItem("portalio_pending_payment_user", data.pending_user_id);
+      }
       window.location.href = data.url;
     } catch (e: any) {
       setError("Something went wrong: " + e.message);

@@ -5,13 +5,14 @@ import { useRouter } from "next/navigation";
 import { Loader2, CheckCircle2, XCircle } from "lucide-react";
 
 type Props = {
+  pendingUserId?: string;
   paymobOrderId?: string;
   merchantOrderId?: string;
   success?: string;
   errorOccured?: string;
 };
 
-export function PaymentConfirmation({ paymobOrderId, merchantOrderId, success, errorOccured }: Props) {
+export function PaymentConfirmation({ pendingUserId, paymobOrderId, merchantOrderId, success, errorOccured }: Props) {
   const router = useRouter();
   const [status, setStatus] = useState<"checking" | "done" | "error">("checking");
 
@@ -23,11 +24,13 @@ export function PaymentConfirmation({ paymobOrderId, merchantOrderId, success, e
         const currentUrl = typeof window !== "undefined" ? new URL(window.location.href) : null;
         const urlPaymobOrderId = currentUrl?.searchParams.get("id") || "";
         const urlMerchantOrderId = currentUrl?.searchParams.get("merchant_order_id") || "";
+        const storedPendingUserId = typeof window !== "undefined" ? window.localStorage.getItem("portalio_pending_payment_user") || "" : "";
 
         const res = await fetch("/api/paymob/confirm", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            pending_user_id: pendingUserId || storedPendingUserId,
             paymob_order_id: paymobOrderId || urlPaymobOrderId,
             merchant_order_id: merchantOrderId || urlMerchantOrderId,
             success,
@@ -54,7 +57,7 @@ export function PaymentConfirmation({ paymobOrderId, merchantOrderId, success, e
     return () => {
       alive = false;
     };
-  }, [router, paymobOrderId, merchantOrderId, success, errorOccured]);
+  }, [router, pendingUserId, paymobOrderId, merchantOrderId, success, errorOccured]);
 
   return (
     <main className="min-h-screen bg-zinc-50 flex items-center justify-center px-4">

@@ -24,6 +24,16 @@ export async function POST(req: Request) {
   const supabase = createClient();
   const { data: userData } = await supabase.auth.getUser();
 
+  const pendingUserIdFromBody = String(body.pending_user_id || "").trim();
+  if (pendingUserIdFromBody && pendingUserIdFromBody.length > 10) {
+    const { error } = await activatePaidAccess(pendingUserIdFromBody);
+    if (!error) {
+      const response = NextResponse.json({ ok: true, source: "pending_user_id" });
+      clearPaymentCookie(response);
+      return response;
+    }
+  }
+
   const paymobOrderId = String(body.paymob_order_id || "").trim();
   if (paymobOrderId) {
     const { data: orderUser } = await createServiceClient()
